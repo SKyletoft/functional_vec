@@ -13,4 +13,4 @@ pub use vecdeque::FunctionalVecDeque;
 #[cfg(feature = "smallvec")]
 mod smallvec;
 #[cfg(feature = "smallvec")]
-pub use smallvec::FunctionalSmallVec;
+pub use crate::smallvec::FunctionalSmallVec;

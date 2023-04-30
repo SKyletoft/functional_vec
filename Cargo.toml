@@ -11,10 +11,11 @@ keywords = [ "vec", "no_std" ]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+smallvec = { version = "1.10.0", optional = true }
 
 [features]
 default = [ "vec", "vecdeque" ]
 
-smallvec = []
+smallvec = [ "dep:smallvec" ]
 vecdeque = []
 vec = []
