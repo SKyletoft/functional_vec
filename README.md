@@ -3,6 +3,8 @@
 Owning versions of all mutable vec methods. Makes vecs slightly more
 ergonomic to use in folds.
 
+Supports `no_std` environments using the `alloc` crate directly.
+
 ## Example
 
 ```rust
