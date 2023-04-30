@@ -21,7 +21,9 @@ where
 	where
 		F: FnMut(&mut Self::Item) -> K,
 		K: PartialEq<K>;
-	fn extend_from_slice_new(self, other: &[Self::Item]) -> Self where Self::Item: Clone;
+	fn extend_from_slice_new(self, other: &[Self::Item]) -> Self
+	where
+		Self::Item: Clone;
 	fn extend_from_within_new<R>(self, src: R) -> Self
 	where
 		Self::Item: Clone,
@@ -88,7 +90,9 @@ impl<T: Sized> FunctionalVec for alloc::vec::Vec<T> {
 	}
 
 	fn extend_from_slice_new(mut self, other: &[Self::Item]) -> Self
-	where T: Clone{
+	where
+		T: Clone,
+	{
 		self.extend_from_slice(other);
 		self
 	}
@@ -138,6 +142,12 @@ impl<T: Sized> FunctionalVec for alloc::vec::Vec<T> {
 		self
 	}
 
+	/// ```
+	/// use functional_vec::FunctionalVec;
+	///
+	/// let v = (0..10).fold(Vec::new(), |acc, curr| acc.push_new(curr));
+	/// assert_eq!(v, vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+	/// ```
 	fn push_new(mut self, item: Self::Item) -> Self {
 		self.push(item);
 		self
