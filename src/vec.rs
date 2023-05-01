@@ -9,6 +9,7 @@ where
 {
 	type Item;
 	fn append_new(self, other: Self) -> Self;
+	fn clear_new(self) -> Self;
 	fn dedup_new(self) -> Self
 	where
 		Self::Item: PartialEq;
@@ -59,6 +60,11 @@ impl<T: Sized> FunctionalVec for alloc::vec::Vec<T> {
 
 	fn append_new(mut self, mut other: Self) -> Self {
 		self.append(&mut other);
+		self
+	}
+
+	fn clear_new(mut self) -> Self {
+		self.clear();
 		self
 	}
 
