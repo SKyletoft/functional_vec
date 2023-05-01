@@ -6,6 +6,7 @@ pub trait FunctionalVecDeque {
 	type Item;
 
 	fn append_new(self, other: Self) -> Self;
+	fn clear_new(self) -> Self;
 	fn insert_new(self, index: usize, value: Self::Item) -> Self;
 	fn make_contiguous_new(self) -> Self;
 	fn pop_back_new(self) -> (Option<Self::Item>, Self);
@@ -45,6 +46,11 @@ impl<T> FunctionalVecDeque for alloc::collections::VecDeque<T> {
 
 	fn append_new(mut self, mut other: Self) -> Self {
 		self.append(&mut other);
+		self
+	}
+
+	fn clear_new(mut self) -> Self {
+		self.clear();
 		self
 	}
 
